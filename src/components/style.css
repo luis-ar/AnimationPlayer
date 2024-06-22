@@ -6,6 +6,16 @@ body {
     sans-serif;
   overflow-x: hidden;
   background-color: #402d2d;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.containerAnimation {
+  background-color: #0a0a0a;
+  padding: 50px;
+  overflow: hidden;
 }
 
 .ml1 {
@@ -467,4 +477,165 @@ h1.ml8 {
 .ml17 .text2 {
   position: relative;
   top: 80px;
+}
+
+/* animation 19*/
+
+.ml19 {
+  opacity: 0;
+  transform: translateY(50%);
+}
+
+/* animation 20*/
+
+.ml20 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* animation 21*/
+.ml22 {
+  position: relative;
+}
+
+.ml22 .block {
+  background-color: rgb(62, 62, 61);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ml27 {
+  width: 200px;
+  background-color: royalblue;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ml27 .item {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* animation 28*/
+
+.ml28 {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+/* animation 30*/
+
+.ml30 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* animation 32*/
+.ml32 {
+  position: relative;
+}
+
+.ml32 .block {
+  background-color: rgb(62, 62, 61);
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ml32 .item {
+  width: 100%;
+  height: 200px;
+}
+
+/* animation 33*/
+
+.ml33 {
+  overflow: hidden;
+}
+
+.ml33 .item {
+  position: relative;
+  left: -100%;
+}
+
+/* animation 34*/
+
+.ml34 {
+  overflow: hidden;
+}
+
+.ml34 .item {
+  position: relative;
+  left: 0;
+}
+
+/* animation 36 */
+
+.ml36 {
+  font-weight: 200;
+  font-size: 3em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  color: white;
+}
+
+.ml36 .letter {
+  display: inline-block;
+  line-height: 1em;
+} /* animation 37 */
+
+.ml37 {
+  font-weight: 200;
+  font-size: 3em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  color: white;
+}
+
+.ml37 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+/* animation 38 */
+
+.ml38 {
+  font-size: 2.6em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  font-weight: 600;
+  color: white;
+}
+
+.ml38 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+/* animation 39 */
+
+.ml39 {
+  font-size: 2.6em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  font-weight: 600;
+  color: white;
+}
+
+.ml39 .letter {
+  display: inline-block;
+  line-height: 1em;
 }

@@ -1,17 +1,17 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline } from "../anime/anime";
-import "./style.css";
+
+import { createTimeline } from "../../anime/anime";
+import "../style.css";
 
 interface AnimatedLettersProps {
   text: string;
 }
-const ThirteenAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
+const ANewProduction: React.FC<AnimatedLettersProps> = ({ text }) => {
   const textWrapperRef = useRef<HTMLHeadingElement>(null);
   const tl = createTimeline({
     loop: true,
   });
-
   useEffect(() => {
     if (textWrapperRef.current) {
       const textWrapper = textWrapperRef.current;
@@ -22,34 +22,34 @@ const ThirteenAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
       );
 
       tl.add(
-        ".ml13 .letter",
+        ".ml12 .letter",
         {
-          translateY: { from: 100, to: 0 },
+          translateX: { from: 40, to: 0 },
           translateZ: 0,
           opacity: { from: 0, to: 1 },
           ease: "outExpo",
-          duration: 1400,
-          delay: (el, i) => 300 + 30 * i,
+          duration: 1200,
+          delay: (el, i) => 500 + 30 * i,
         },
         0
       ).add(
-        ".ml13 .letter",
+        ".ml12 .letter",
         {
-          translateY: { from: 0, to: -100 },
+          translateX: { from: 0, to: 30 },
           opacity: { from: 1, to: 0 },
           ease: "inExpo",
-          duration: 1200,
+          duration: 1100,
           delay: (el, i) => 100 + 30 * i,
         },
         "<="
       );
     }
-  }, []);
+  }, [text]);
   return (
-    <h1 className="ml13" ref={textWrapperRef}>
+    <h1 className="ml12" ref={textWrapperRef}>
       {text}
     </h1>
   );
 };
 
-export default ThirteenAnimation;
+export default ANewProduction;

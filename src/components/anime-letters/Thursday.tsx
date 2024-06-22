@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import "./style.css";
-import { createTimeline } from "../anime/anime";
+import "../style.css";
+import { createTimeline } from "../../anime/anime";
 
 interface AnimatedLetterProps {
   text: string;
 }
-const FirstAnime: React.FC<AnimatedLetterProps> = ({ text }) => {
+const Thursday: React.FC<AnimatedLetterProps> = ({ text }) => {
   const textWrapperRef = useRef<HTMLHeadingElement>(null);
   const tl = createTimeline({
     loop: true,
@@ -71,4 +71,4 @@ const FirstAnime: React.FC<AnimatedLetterProps> = ({ text }) => {
   );
 };
 
-export default FirstAnime;
+export default Thursday;

@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline } from "../anime/anime";
-import "./style.css";
+import { createTimeline } from "../../anime/anime";
+import "../style.css";
 
 interface AnimatedLettersProps {
   text: string;
 }
 
-const SixteenAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
+const MadeWithLove: React.FC<AnimatedLettersProps> = ({ text }) => {
   const textWrapperRef = useRef<HTMLHeadingElement>(null);
   const tl = createTimeline({
     loop: true,
@@ -64,4 +64,4 @@ const SixteenAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
   );
 };
 
-export default SixteenAnimation;
+export default MadeWithLove;

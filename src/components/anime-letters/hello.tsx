@@ -1,12 +1,11 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-
-import { createTimeline, animate } from "../anime/anime";
-import "./style.css";
+import { createTimeline, animate } from "../../anime/anime";
+import "../style.css";
 interface AnimatedLettersProps {
   text: string;
 }
-const EighthAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
+const Hello: React.FC<AnimatedLettersProps> = ({ text }) => {
   const animationRef = useRef(null);
   const tl = createTimeline({
     loop: true,
@@ -94,4 +93,4 @@ const EighthAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
   );
 };
 
-export default EighthAnimation;
+export default Hello;

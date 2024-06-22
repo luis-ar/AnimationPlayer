@@ -1,17 +1,18 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import { createTimeline } from "../../anime/anime";
+import "../style.css";
 
-import { createTimeline } from "../anime/anime";
-import "./style.css";
 interface AnimatedLettersProps {
   text: string;
 }
 
-const SixthAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
+const RealityBroken: React.FC<AnimatedLettersProps> = ({ text }) => {
   const textWrapperRef = useRef<HTMLHeadingElement>(null);
   const tl = createTimeline({
     loop: true,
   });
+
   useEffect(() => {
     if (textWrapperRef.current) {
       const textWrapper = textWrapperRef.current;
@@ -22,16 +23,19 @@ const SixthAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
       );
 
       tl.add(
-        ".ml6 .letter",
+        ".ml7 .letter",
         {
           translateY: { from: "1.1em", to: 0 },
+          translateX: { from: "0.55em", to: 0 },
           translateZ: 0,
+          rotateZ: { from: 180, to: 0 },
           duration: 750,
+          easing: "outExpo",
           delay: (el, i) => 50 * i,
         },
         0
       ).add(
-        ".ml6",
+        ".ml7",
         {
           opacity: 0,
           duration: 1000,
@@ -41,9 +45,9 @@ const SixthAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
         "<="
       );
     }
-  }, [text]);
+  }, []);
   return (
-    <h1 className="ml6">
+    <h1 className="ml7">
       <span className="text-wrapper">
         <span className="letters" ref={textWrapperRef}>
           {text}
@@ -53,4 +57,4 @@ const SixthAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
   );
 };
 
-export default SixthAnimation;
+export default RealityBroken;

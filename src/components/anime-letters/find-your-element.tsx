@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 
-import { createTimeline } from "../anime/anime";
-import "./style.css";
+import { createTimeline } from "../../anime/anime";
+import "../style.css";
 
 interface AnimatedLettersProps {
   text: string;
 }
-const FourteenAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
+const FindYourElement: React.FC<AnimatedLettersProps> = ({ text }) => {
   const textWrapperRef = useRef<HTMLHeadingElement>(null);
   const tl = createTimeline({
     loop: true,
@@ -16,10 +16,23 @@ const FourteenAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
     if (textWrapperRef.current) {
       const textWrapper = textWrapperRef.current;
 
-      textWrapper.innerHTML = textWrapper.textContent!.replace(
-        /\S/g,
-        "<span className='letter'>$&</span>"
-      );
+      textWrapper.innerHTML = "";
+      const words = text.split(" ");
+
+      words.forEach((word, wordIndex) => {
+        const wordSpan = document.createElement("span");
+        wordSpan.className = "word";
+        word.split("").forEach((char) => {
+          const charSpan = document.createElement("span");
+          charSpan.className = "letter";
+          charSpan.textContent = char;
+          wordSpan.appendChild(charSpan);
+        });
+        textWrapper.appendChild(wordSpan);
+        if (wordIndex < words.length - 1) {
+          textWrapper.appendChild(document.createTextNode(" "));
+        }
+      });
 
       tl.add(
         ".ml14 .line",
@@ -68,4 +81,4 @@ const FourteenAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
   );
 };
 
-export default FourteenAnimation;
+export default FindYourElement;

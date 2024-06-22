@@ -1,16 +1,17 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline } from "../anime/anime";
-import "./style.css";
-interface AnimatedLetterProps {
+
+import { createTimeline } from "../../anime/anime";
+import "../style.css";
+interface AnimatedLettersProps {
   text: string;
 }
-const SecondAnimation: React.FC<AnimatedLetterProps> = ({ text }) => {
+
+const BeautifulQuestions: React.FC<AnimatedLettersProps> = ({ text }) => {
   const textWrapperRef = useRef<HTMLHeadingElement>(null);
   const tl = createTimeline({
     loop: true,
   });
-
   useEffect(() => {
     if (textWrapperRef.current) {
       const textWrapper = textWrapperRef.current;
@@ -21,35 +22,35 @@ const SecondAnimation: React.FC<AnimatedLetterProps> = ({ text }) => {
       );
 
       tl.add(
-        ".ml2 .letter",
+        ".ml6 .letter",
         {
-          scale: { from: 4, to: 1 },
-          opacity: { from: 0, to: 1 },
+          translateY: { from: "1.1em", to: 0 },
           translateZ: 0,
-          ease: "outExpo",
-          duration: 1000,
-          delay: (el, i) => 70 * i,
+          duration: 750,
+          delay: (el, i) => 50 * i,
         },
         0
       ).add(
-        ".ml2",
+        ".ml6",
         {
           opacity: 0,
+          duration: 1000,
           ease: "outExpo",
-          duration: 700,
           delay: 1000,
         },
         "<="
       );
     }
-  }, []);
+  }, [text]);
   return (
-    <div>
-      <h1 ref={textWrapperRef} className="ml2">
-        {text}
-      </h1>
-    </div>
+    <h1 className="ml6">
+      <span className="text-wrapper">
+        <span className="letters" ref={textWrapperRef}>
+          {text}
+        </span>
+      </span>
+    </h1>
   );
 };
 
-export default SecondAnimation;
+export default BeautifulQuestions;

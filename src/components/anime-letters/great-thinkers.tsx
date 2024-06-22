@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline } from "../anime/anime";
-import "./style.css";
+import { createTimeline } from "../../anime/anime";
+import "../style.css";
 
-interface AnimatedLettersProps {
+interface AnimatedLetterProps {
   text: string;
 }
-const TenthAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
+const GreatThinkers: React.FC<AnimatedLetterProps> = ({ text }) => {
   const textWrapperRef = useRef<HTMLHeadingElement>(null);
   const tl = createTimeline({
     loop: true,
@@ -34,34 +34,31 @@ const TenthAnimation: React.FC<AnimatedLettersProps> = ({ text }) => {
       });
 
       tl.add(
-        ".ml10 .letter",
+        ".ml3 .letter",
         {
-          rotateY: { from: -90, to: 0 },
-          duration: 1300,
-          delay: (el, i) => 45 * i,
+          opacity: { from: 0, to: 1 },
+          ease: "inOutQuad",
+          duration: 2250,
+          delay: (el, i) => 150 * (i + 1),
         },
         0
       ).add(
-        ".ml10",
+        ".ml3",
         {
           opacity: 0,
-          duration: 1000,
           ease: "outExpo",
+          duration: 1000,
           delay: 1000,
         },
         "<="
       );
     }
-  }, [text]);
+  }, []);
   return (
-    <h1 className="ml10">
-      <span className="text-wrapper">
-        <span className="letters" ref={textWrapperRef}>
-          {text}
-        </span>
-      </span>
+    <h1 ref={textWrapperRef} className="ml3">
+      {text}
     </h1>
   );
 };
 
-export default TenthAnimation;
+export default GreatThinkers;

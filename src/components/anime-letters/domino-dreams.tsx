@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline } from "../anime/anime";
-import "./style.css";
+import { createTimeline } from "../../anime/anime";
+import "../style.css";
 
-interface AnimatedLetterProps {
+interface AnimatedLettersProps {
   text: string;
 }
-const ThirdAnimation: React.FC<AnimatedLetterProps> = ({ text }) => {
+const DominoDreams: React.FC<AnimatedLettersProps> = ({ text }) => {
   const textWrapperRef = useRef<HTMLHeadingElement>(null);
   const tl = createTimeline({
     loop: true,
@@ -34,31 +34,34 @@ const ThirdAnimation: React.FC<AnimatedLetterProps> = ({ text }) => {
       });
 
       tl.add(
-        ".ml3 .letter",
+        ".ml10 .letter",
         {
-          opacity: { from: 0, to: 1 },
-          ease: "inOutQuad",
-          duration: 2250,
-          delay: (el, i) => 150 * (i + 1),
+          rotateY: { from: -90, to: 0 },
+          duration: 1300,
+          delay: (el, i) => 45 * i,
         },
         0
       ).add(
-        ".ml3",
+        ".ml10",
         {
           opacity: 0,
-          ease: "outExpo",
           duration: 1000,
+          ease: "outExpo",
           delay: 1000,
         },
         "<="
       );
     }
-  }, []);
+  }, [text]);
   return (
-    <h1 ref={textWrapperRef} className="ml3">
-      {text}
+    <h1 className="ml10">
+      <span className="text-wrapper">
+        <span className="letters" ref={textWrapperRef}>
+          {text}
+        </span>
+      </span>
     </h1>
   );
 };
 
-export default ThirdAnimation;
+export default DominoDreams;
