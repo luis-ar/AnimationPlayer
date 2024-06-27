@@ -1,21 +1,25 @@
 "use client";
 import React, { useEffect } from "react";
-import { animate } from "../anime/anime";
+import { Timeline, animate } from "../anime/anime";
 import "./style.css";
 
 interface AnimatedLetterProps {
-  text: string;
+  timeLine: Timeline;
 }
 
-const RevealInAnimation: React.FC<AnimatedLetterProps> = ({ text }) => {
+const RevealInAnimation: React.FC<AnimatedLetterProps> = ({ timeLine }) => {
   useEffect(() => {
-    animate(".ml33 .item", {
-      left: { from: "-100%", to: "0%" },
-      easing: "easeOutExpo",
-      duration: 2000,
-      delay: (el, i) => 70 * i,
-      loop: true,
-    });
+    timeLine.add(
+      ".ml33 .item",
+      {
+        left: { from: "-100%", to: "0%" },
+        easing: "easeOutExpo",
+        duration: 2000,
+        delay: (el, i) => 70 * i,
+        loop: true,
+      },
+      0
+    );
   }, []);
 
   return (

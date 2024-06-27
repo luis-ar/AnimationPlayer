@@ -1,19 +1,23 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline, animate } from "../anime/anime";
+import { createTimeline, animate, Timeline } from "../anime/anime";
 import "./style.css";
 interface AnimatedLetterProps {
-  text: string;
+  timeLine: Timeline;
 }
-const ZoomInAnimation: React.FC<AnimatedLetterProps> = ({ text }) => {
+const ZoomInAnimation: React.FC<AnimatedLetterProps> = ({ timeLine }) => {
   useEffect(() => {
-    animate(".ml21", {
-      scale: { from: 0, to: 1 },
-      ease: "outExpo",
-      duration: 2000,
-      delay: (el, i) => 70 * i,
-      loop: true,
-    });
+    timeLine.add(
+      ".ml21",
+      {
+        scale: { from: 0, to: 1 },
+        ease: "outExpo",
+        duration: 2000,
+        delay: (el, i) => 70 * i,
+        loop: true,
+      },
+      0
+    );
   }, []);
   return (
     <div className="containerAnimation">

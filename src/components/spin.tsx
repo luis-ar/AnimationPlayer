@@ -1,17 +1,13 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline, animate } from "../anime/anime";
+import { createTimeline, animate, Timeline } from "../anime/anime";
 import "./style.css";
 interface AnimatedLetterProps {
-  text: string;
+  timeLine: Timeline;
 }
-const SpinAnimation: React.FC<AnimatedLetterProps> = ({ text }) => {
-  const tl = createTimeline({
-    loop: true,
-  });
-
+const SpinAnimation: React.FC<AnimatedLetterProps> = ({ timeLine }) => {
   useEffect(() => {
-    tl.add(
+    timeLine.add(
       ".ml26",
       {
         rotate: {

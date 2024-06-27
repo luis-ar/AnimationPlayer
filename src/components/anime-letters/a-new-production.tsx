@@ -1,27 +1,19 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 
-import { createTimeline } from "../../anime/anime";
+import { Timeline, createTimeline } from "../../anime/anime";
 import "../style.css";
+import { spanLetters } from "../../utils/span-letters";
 
 interface AnimatedLettersProps {
   text: string;
+  timeLine: Timeline;
 }
-const ANewProduction: React.FC<AnimatedLettersProps> = ({ text }) => {
-  const textWrapperRef = useRef<HTMLHeadingElement>(null);
-  const tl = createTimeline({
-    loop: true,
-  });
+const ANewProduction: React.FC<AnimatedLettersProps> = ({ text, timeLine }) => {
   useEffect(() => {
-    if (textWrapperRef.current) {
-      const textWrapper = textWrapperRef.current;
-
-      textWrapper.innerHTML = textWrapper.textContent!.replace(
-        /\S/g,
-        "<span class='letter'>$&</span>"
-      );
-
-      tl.add(
+    spanLetters(text, "ml12");
+    timeLine
+      .add(
         ".ml12 .letter",
         {
           translateX: { from: 40, to: 0 },
@@ -32,7 +24,8 @@ const ANewProduction: React.FC<AnimatedLettersProps> = ({ text }) => {
           delay: (el, i) => 500 + 30 * i,
         },
         0
-      ).add(
+      )
+      .add(
         ".ml12 .letter",
         {
           translateX: { from: 0, to: 30 },
@@ -43,13 +36,8 @@ const ANewProduction: React.FC<AnimatedLettersProps> = ({ text }) => {
         },
         "<="
       );
-    }
   }, [text]);
-  return (
-    <h1 className="ml12" ref={textWrapperRef}>
-      {text}
-    </h1>
-  );
+  return <h1 className="ml12">{text}</h1>;
 };
 
 export default ANewProduction;

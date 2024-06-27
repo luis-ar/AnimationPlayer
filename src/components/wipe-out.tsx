@@ -1,19 +1,23 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline, animate } from "../anime/anime";
+import { createTimeline, animate, Timeline } from "../anime/anime";
 import "./style.css";
 interface AnimatedLetterProps {
-  text: string;
+  timeLine: Timeline;
 }
-const WipeOutAnimation: React.FC<AnimatedLetterProps> = ({ text }) => {
+const WipeOutAnimation: React.FC<AnimatedLetterProps> = ({ timeLine }) => {
   useEffect(() => {
-    animate(".ml30", {
-      width: { from: "100%", to: 0 },
-      ease: "outExpo",
-      duration: 1500,
-      delay: (el, i) => 70 * i,
-      loop: true,
-    });
+    timeLine.add(
+      ".ml30",
+      {
+        width: { from: "100%", to: 0 },
+        ease: "outExpo",
+        duration: 1500,
+        delay: (el, i) => 70 * i,
+        loop: true,
+      },
+      0
+    );
   }, []);
   return (
     <div className="containerAnimation">

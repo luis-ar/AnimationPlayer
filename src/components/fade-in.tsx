@@ -1,21 +1,24 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline, animate } from "../anime/anime";
+import { createTimeline, animate, Timeline } from "../anime/anime";
 import "./style.css";
 interface AnimatedLetterProps {
-  text: string;
+  timeLine: Timeline;
 }
-const FadeInAnimation: React.FC<AnimatedLetterProps> = ({ text }) => {
+const FadeInAnimation: React.FC<AnimatedLetterProps> = ({ timeLine }) => {
   useEffect(() => {
-    animate(".ml19", {
-      opacity: { from: 0, to: 1 },
-      translateY: { from: "50%", to: "0%" },
-      easing: "easeInOutQuint",
-      ease: "inOutQuint",
-      duration: 1500,
-      delay: (el, i) => 150 * i,
-      loop: true,
-    });
+    timeLine.add(
+      ".ml19",
+      {
+        opacity: { from: 0, to: 1 },
+        translateY: { from: "50%", to: "0%" },
+        ease: "inOutQuint",
+        duration: 1500,
+        delay: (el, i) => 150 * i,
+        loop: true,
+      },
+      0
+    );
   }, []);
   return (
     <div className="containerAnimation">

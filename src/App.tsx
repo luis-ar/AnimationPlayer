@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { animate, stagger } from "./anime/anime";
+import { animate, createTimeline, stagger } from "./anime/anime";
 import Thursday from "./components/anime-letters/Thursday";
 import SunnyMornings from "./components/anime-letters/sunny-mornings";
 import GreatThinkers from "./components/anime-letters/great-thinkers";
@@ -39,56 +39,48 @@ import RisingStrongIn from "./components/anime-letters/rising-strong-in";
 import RisingStrongOut from "./components/anime-letters/rising-strong-out";
 
 function App() {
-  // useEffect(() => {
-  //   animate(".square", {
-  //     translateX: 320,
-  //     rotate: { from: -180 },
-  //     duration: 1250,
-  //     delay: stagger(65, { from: "center" }),
-  //     ease: "inOutQuint",
-  //     loop: true,
-  //     alternate: true,
-  //   });
-  // }, []);
+  const timeLine = createTimeline({
+    loop: true,
+  });
   return (
     <>
-      {/* <Thursday text="Hello World" /> */}
-      {/* <SunnyMornings text="Hello World" /> */}
-      {/* <GreatThinkers text="Hello World" /> */}
-      {/* <ReadySetGo text="Hello World Luis" /> */}
-      {/* <SignalNoise text="Hello World Luis" /> */}
-      {/* <BeautifulQuestions text="Hello World Luis" /> */}
-      {/* <RealityBroken text="Hello World Luis" /> */}
-      {/* <Hello text="Luis" /> */}
-      {/* <CoffeeMornings text="Hello World Luis" /> */}
-      {/* <DominoDreams text="Hello World Luis" /> */}
-      {/* <HelloGoodbye text="Hello World Luis" /> */}
-      {/* <ANewProduction text="Hello World" /> */}
-      {/* <ANewProductionIn text="Hello World" /> */}
-      {/* <ANewProductionOut text="Hello World" /> */}
-      {/* <RisingStrong text="Hello World" /> */}
-      {/* <RisingStrongIn text="Hello World" /> */}
-      {/* <RisingStrongOut text="Hello World" /> */}
-      {/* <FindYourElement text="Hello World" /> */}
-      {/* <OutNow text="Hello World Luis" /> */}
-      <MadeWithLove text="Hello World Luis" />
-      {/* <SeventeenAnimation text="Hello World Luis" /> */}
-      {/* <FlyInAnimation text="Hello World Luis" /> */}
-      {/* <FadeInAnimation text="Hello World Luis" /> */}
-      {/* <WipeInAnimation text="Hello World Luis" /> */}
-      {/* <ZoomInAnimation text="Hello World Luis" /> */}
-      {/* <BlockRevealInAnimation text="Hello World Luis" /> */}
-      {/* <TumbleInAnimation text="Hello World Luis" /> */}
-      {/* <FlickerAnimation text="Hello World Luis" /> */}
-      {/* <StompAnimation text="Hello World Luis" /> */}
-      {/* <SpinAnimation text="Hello World Luis" /> */}
-      {/* <FadeOutAnimation text="Hello World Luis" /> */}
-      {/* <FlyOutAnimation text="Hello World Luis" /> */}
-      {/* <WipeOutAnimation text="Hello World Luis" /> */}
-      {/* <TumbleOutAnimation text="Hello World Luis" /> */}
-      {/* <BlockRevealOutAnimation text="Hello World Luis" /> */}
-      {/* <RevealInAnimation text="Hello World Luis" /> */}
-      {/* <RevealOutAnimation text="Hello World Luis" /> */}
+      <Thursday text="Hello World" timeLine={timeLine} />
+      {/* <SunnyMornings text="Hello World" timeLine={timeLine} /> */}
+      {/* <GreatThinkers text="Hello World" timeLine={timeLine} /> */}
+      {/* <ReadySetGo text="Hello World Luis" timeLine={timeLine} /> */}
+      {/* <SignalNoise text="Hello World Luis" timeLine={timeLine} /> */}
+      {/* <BeautifulQuestions text="Hello World Luis" timeLine={timeLine} /> */}
+      {/* <RealityBroken text="Hello World Luis" timeLine={timeLine} /> */}
+      {/* <Hello text="Luis" timeLine={timeLine} /> */}
+      {/* <CoffeeMornings text="Hello World Luis" timeLine={timeLine} /> */}
+      {/* <DominoDreams text="Hello World Luis" timeLine={timeLine} /> */}
+      {/* <HelloGoodbye text="Hello World Luis" timeLine={timeLine} /> */}
+      {/* <ANewProduction text="Hello World" timeLine={timeLine} /> */}
+      {/* <ANewProductionIn text="Hello World" timeLine={timeLine} /> */}
+      {/* <ANewProductionOut text="Hello World" timeLine={timeLine} /> */}
+      {/* <RisingStrong text="Hello World" timeLine={timeLine} /> */}
+      {/* <RisingStrongIn text="Hello World" timeLine={timeLine} /> */}
+      {/* <RisingStrongOut text="Hello World" timeLine={timeLine} /> */}
+      {/* <FindYourElement text="Hello World" timeLine={timeLine} /> */}
+      {/* <OutNow text="Hello World Luis" timeLine={timeLine} /> */}
+      {/* <MadeWithLove text="Hello World Luis" timeLine={timeLine} /> */}
+      {/* <SeventeenAnimation text="Hello World Luis" timeLine={timeLine} /> */}
+      {/* <FlyInAnimation timeLine={timeLine} /> */}
+      {/* <FadeInAnimation timeLine={timeLine} /> */}
+      {/* <WipeInAnimation timeLine={timeLine} /> */}
+      {/* <ZoomInAnimation timeLine={timeLine} /> */}
+      {/* <BlockRevealInAnimation timeLine={timeLine} /> */}
+      {/* <TumbleInAnimation timeLine={timeLine} /> */}
+      {/* <FlickerAnimation timeLine={timeLine} /> */}
+      {/* <StompAnimation timeLine={timeLine} /> */}
+      {/* <SpinAnimation timeLine={timeLine} /> */}
+      {/* <FadeOutAnimation  timeLine={timeLine} /> */}
+      {/* <FlyOutAnimation timeLine={timeLine} /> */}
+      {/* <WipeOutAnimation timeLine={timeLine} /> */}
+      {/* <TumbleOutAnimation timeLine={timeLine} /> */}
+      {/* <BlockRevealOutAnimation timeLine={timeLine} /> */}
+      {/* <RevealInAnimation timeLine={timeLine} /> */}
+      {/* <RevealOutAnimation timeLine={timeLine} /> */}
     </>
   );
 }

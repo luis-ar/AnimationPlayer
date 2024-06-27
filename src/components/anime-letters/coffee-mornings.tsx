@@ -1,26 +1,18 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline } from "../../anime/anime";
+import { Timeline, createTimeline } from "../../anime/anime";
 import "../style.css";
+import { spanLetters } from "../../utils/span-letters";
 interface AnimatedLettersProps {
   text: string;
+  timeLine: Timeline;
 }
-const CoffeeMornings: React.FC<AnimatedLettersProps> = ({ text }) => {
-  const textWrapperRef = useRef<HTMLHeadingElement>(null);
-  const tl = createTimeline({
-    loop: true,
-  });
-
+const CoffeeMornings: React.FC<AnimatedLettersProps> = ({ text, timeLine }) => {
   useEffect(() => {
-    if (textWrapperRef.current) {
-      const textWrapper = textWrapperRef.current;
+    spanLetters(text, "letters");
 
-      textWrapper.innerHTML = textWrapper.textContent!.replace(
-        /\S/g,
-        "<span class='letter'>$&</span>"
-      );
-
-      tl.add(
+    timeLine
+      .add(
         ".ml9 .letter",
         {
           scale: { from: 0, to: 1 },
@@ -29,7 +21,8 @@ const CoffeeMornings: React.FC<AnimatedLettersProps> = ({ text }) => {
           delay: (el, i) => 50 * i,
         },
         0
-      ).add(
+      )
+      .add(
         ".ml9",
         {
           opacity: 0,
@@ -39,14 +32,11 @@ const CoffeeMornings: React.FC<AnimatedLettersProps> = ({ text }) => {
         },
         "<="
       );
-    }
   }, [text]);
   return (
     <h1 className="ml9">
       <span className="text-wrapper">
-        <span className="letters" ref={textWrapperRef}>
-          {text}
-        </span>
+        <span className="letters">{text}</span>
       </span>
     </h1>
   );

@@ -1,39 +1,18 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline } from "../../anime/anime";
+import { Timeline, createTimeline } from "../../anime/anime";
 import "../style.css";
+import { spanLetters } from "../../utils/span-letters";
 
 interface AnimatedLettersProps {
   text: string;
+  timeLine: Timeline;
 }
-const DominoDreams: React.FC<AnimatedLettersProps> = ({ text }) => {
-  const textWrapperRef = useRef<HTMLHeadingElement>(null);
-  const tl = createTimeline({
-    loop: true,
-  });
+const DominoDreams: React.FC<AnimatedLettersProps> = ({ text, timeLine }) => {
   useEffect(() => {
-    if (textWrapperRef.current) {
-      const textWrapper = textWrapperRef.current;
-
-      textWrapper.innerHTML = "";
-      const words = text.split(" ");
-
-      words.forEach((word, wordIndex) => {
-        const wordSpan = document.createElement("span");
-        wordSpan.className = "word";
-        word.split("").forEach((char) => {
-          const charSpan = document.createElement("span");
-          charSpan.className = "letter";
-          charSpan.textContent = char;
-          wordSpan.appendChild(charSpan);
-        });
-        textWrapper.appendChild(wordSpan);
-        if (wordIndex < words.length - 1) {
-          textWrapper.appendChild(document.createTextNode(" "));
-        }
-      });
-
-      tl.add(
+    spanLetters(text, "letters");
+    timeLine
+      .add(
         ".ml10 .letter",
         {
           rotateY: { from: -90, to: 0 },
@@ -41,7 +20,8 @@ const DominoDreams: React.FC<AnimatedLettersProps> = ({ text }) => {
           delay: (el, i) => 45 * i,
         },
         0
-      ).add(
+      )
+      .add(
         ".ml10",
         {
           opacity: 0,
@@ -51,14 +31,11 @@ const DominoDreams: React.FC<AnimatedLettersProps> = ({ text }) => {
         },
         "<="
       );
-    }
   }, [text]);
   return (
     <h1 className="ml10">
       <span className="text-wrapper">
-        <span className="letters" ref={textWrapperRef}>
-          {text}
-        </span>
+        <span className="letters">{text}</span>
       </span>
     </h1>
   );

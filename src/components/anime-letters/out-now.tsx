@@ -1,19 +1,16 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline } from "../../anime/anime";
+import { Timeline, createTimeline } from "../../anime/anime";
 import "../style.css";
 
 interface AnimatedLettersProps {
   text: string;
+  timeLine: Timeline;
 }
-const OutNow: React.FC<AnimatedLettersProps> = ({ text }) => {
-  const textWrapperRef = useRef<HTMLHeadingElement>(null);
-  const tl = createTimeline({
-    loop: true,
-  });
+const OutNow: React.FC<AnimatedLettersProps> = ({ text, timeLine }) => {
   useEffect(() => {
-    if (textWrapperRef.current) {
-      tl.add(
+    timeLine
+      .add(
         ".ml15 .word",
         {
           scale: { from: 14, to: 1 },
@@ -23,7 +20,8 @@ const OutNow: React.FC<AnimatedLettersProps> = ({ text }) => {
           delay: (el, i) => 800 * i,
         },
         0
-      ).add(
+      )
+      .add(
         ".ml15",
         {
           opacity: 0,
@@ -33,12 +31,11 @@ const OutNow: React.FC<AnimatedLettersProps> = ({ text }) => {
         },
         "<="
       );
-    }
   }, [text]);
   const words = text.split(" ");
 
   return (
-    <h1 className="ml15" ref={textWrapperRef}>
+    <h1 className="ml15">
       {words.map((word, index) => (
         <span key={index} className="word">
           {word}

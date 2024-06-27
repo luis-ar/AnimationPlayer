@@ -1,34 +1,34 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline, animate } from "../anime/anime";
+import { createTimeline, animate, Timeline } from "../anime/anime";
 import "./style.css";
 interface AnimatedLetterProps {
-  text: string;
+  timeLine: Timeline;
 }
-const BlockRevealOutAnimation: React.FC<AnimatedLetterProps> = ({ text }) => {
-  const tl = createTimeline({
-    loop: true,
-  });
-
+const BlockRevealOutAnimation: React.FC<AnimatedLetterProps> = ({
+  timeLine,
+}) => {
   useEffect(() => {
-    tl.add(
-      ".ml32 .block",
-      {
-        width: { from: "70%", to: "100%" },
-        ease: "linear",
-        duration: 1000,
-        delay: (el, i) => 70 * i,
-      },
-      0
-    ).add(
-      ".ml32",
-      {
-        width: { from: "100%", to: "0%" },
-        ease: "linear",
-        duration: 1200,
-      },
-      "<="
-    );
+    timeLine
+      .add(
+        ".ml32 .block",
+        {
+          width: { from: "70%", to: "100%" },
+          ease: "linear",
+          duration: 1000,
+          delay: (el, i) => 70 * i,
+        },
+        0
+      )
+      .add(
+        ".ml32",
+        {
+          width: { from: "100%", to: "0%" },
+          ease: "linear",
+          duration: 1200,
+        },
+        "<="
+      );
   }, []);
   return (
     <div className="containerAnimation">

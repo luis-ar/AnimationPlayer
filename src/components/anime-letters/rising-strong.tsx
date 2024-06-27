@@ -1,27 +1,19 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline } from "../../anime/anime";
+import { Timeline, createTimeline } from "../../anime/anime";
 import "../style.css";
+import { spanLetters } from "../../utils/span-letters";
 
 interface AnimatedLettersProps {
   text: string;
+  timeLine: Timeline;
 }
-const RisingStrong: React.FC<AnimatedLettersProps> = ({ text }) => {
-  const textWrapperRef = useRef<HTMLHeadingElement>(null);
-  const tl = createTimeline({
-    loop: true,
-  });
-
+const RisingStrong: React.FC<AnimatedLettersProps> = ({ text, timeLine }) => {
   useEffect(() => {
-    if (textWrapperRef.current) {
-      const textWrapper = textWrapperRef.current;
+    spanLetters(text, "ml13");
 
-      textWrapper.innerHTML = textWrapper.textContent!.replace(
-        /\S/g,
-        "<span class='letter'>$&</span>"
-      );
-
-      tl.add(
+    timeLine
+      .add(
         ".ml13 .letter",
         {
           translateY: { from: 100, to: 0 },
@@ -32,7 +24,8 @@ const RisingStrong: React.FC<AnimatedLettersProps> = ({ text }) => {
           delay: (el, i) => 300 + 30 * i,
         },
         0
-      ).add(
+      )
+      .add(
         ".ml13 .letter",
         {
           translateY: { from: 0, to: -100 },
@@ -43,13 +36,8 @@ const RisingStrong: React.FC<AnimatedLettersProps> = ({ text }) => {
         },
         "<="
       );
-    }
   }, []);
-  return (
-    <h1 className="ml13" ref={textWrapperRef}>
-      {text}
-    </h1>
-  );
+  return <h1 className="ml13">{text}</h1>;
 };
 
 export default RisingStrong;

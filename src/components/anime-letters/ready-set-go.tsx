@@ -1,31 +1,28 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import "../style.css";
-import { createTimeline } from "../../anime/anime";
+import { Timeline, createTimeline } from "../../anime/anime";
 
 interface AnimatedLettersProps {
   text: string;
+  timeLine: Timeline;
 }
 
-const ReadySetGo: React.FC<AnimatedLettersProps> = ({ text }) => {
-  const animationRef = useRef(null);
-  const tl = createTimeline({
-    loop: true,
-  });
+const ReadySetGo: React.FC<AnimatedLettersProps> = ({ text, timeLine }) => {
   useEffect(() => {
-    if (animationRef.current) {
-      const words = text.split(" ");
+    const words = text.split(" ");
 
-      const ml4 = {
-        opacityIn: [0, 1],
-        scaleIn: [0.2, 1],
-        scaleOut: 3,
-        durationIn: 800,
-        durationOut: 600,
-        delay: 500,
-      };
-      words.forEach((word, index) => {
-        tl.add(
+    const ml4 = {
+      opacityIn: [0, 1],
+      scaleIn: [0.2, 1],
+      scaleOut: 3,
+      durationIn: 800,
+      durationOut: 600,
+      delay: 500,
+    };
+    words.forEach((word, index) => {
+      timeLine
+        .add(
           `.ml4 .letters-${index}`,
           {
             opacity: ml4.opacityIn,
@@ -33,7 +30,8 @@ const ReadySetGo: React.FC<AnimatedLettersProps> = ({ text }) => {
             duration: ml4.durationIn,
           },
           index === 0 ? 0 : "<="
-        ).add(
+        )
+        .add(
           `.ml4 .letters-${index}`,
           {
             opacity: 0,
@@ -44,22 +42,21 @@ const ReadySetGo: React.FC<AnimatedLettersProps> = ({ text }) => {
           },
           "<="
         );
-      });
-      tl.add(
-        ".ml4",
-        {
-          opacity: 0,
-          duration: 500,
-          delay: 500,
-        },
-        "<="
-      );
-    }
+    });
+    timeLine.add(
+      ".ml4",
+      {
+        opacity: 0,
+        duration: 500,
+        delay: 500,
+      },
+      "<="
+    );
   }, [text]);
   const words = text.split(" ");
 
   return (
-    <h1 ref={animationRef} className="ml4">
+    <h1 className="ml4">
       {words.map((word, index) => (
         <span key={index} className={`letters letters-${index}`}>
           {word}

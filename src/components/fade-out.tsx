@@ -1,21 +1,25 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { createTimeline, animate } from "../anime/anime";
+import { createTimeline, animate, Timeline } from "../anime/anime";
 import "./style.css";
 interface AnimatedLetterProps {
-  text: string;
+  timeLine: Timeline;
 }
-const FadeOutAnimation: React.FC<AnimatedLetterProps> = ({ text }) => {
+const FadeOutAnimation: React.FC<AnimatedLetterProps> = ({ timeLine }) => {
   useEffect(() => {
-    animate(".ml28", {
-      opacity: { from: 1, to: 0 },
-      translateY: { from: "0%", to: "-50%" },
-      easing: "easeInOutQuint",
-      ease: "inOutQuint",
-      duration: 1500,
-      delay: (el, i) => 150 * i,
-      loop: true,
-    });
+    timeLine.add(
+      ".ml28",
+      {
+        opacity: { from: 1, to: 0 },
+        translateY: { from: "0%", to: "-50%" },
+        easing: "easeInOutQuint",
+        ease: "inOutQuint",
+        duration: 1500,
+        delay: (el, i) => 150 * i,
+        loop: true,
+      },
+      0
+    );
   }, []);
   return (
     <div className="containerAnimation">
