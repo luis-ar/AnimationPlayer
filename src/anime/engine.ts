@@ -25,6 +25,16 @@ export const engineCancelMethod = isBrowser
   : clearImmediate;
 
 export class Engine extends Clock {
+  public useDefaultMainLoop: boolean;
+  public suspendWhenHidden: boolean;
+  public currentTime: number;
+  public _elapsedTime: number;
+  public _startTime: number;
+  public _lastTime: number;
+  public _speed: number;
+  public _fps: number;
+  public _reqId: number;
+
   constructor() {
     super();
 

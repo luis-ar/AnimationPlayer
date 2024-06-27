@@ -1,33 +1,63 @@
 import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import { animate, stagger } from "./anime/anime";
-function App() {
-  const [count, setCount] = useState(0);
+import { animate, stagger, createTimeline } from "./anime";
 
+const timeline = createTimeline({});
+
+function App() {
   useEffect(() => {
-    animate(".square", {
-      translateX: 320,
-      rotate: { from: -180 },
-      duration: 1250,
-      delay: stagger(65, { from: "center" }),
-      ease: "inOutQuint",
-      loop: true,
-      alternate: true,
+    const timeline = createTimeline({
+      autoplay: false,
     });
+
+    timeline
+      .add(
+        ".circle",
+        {
+          translateX: "15rem",
+          duration: 500,
+          delay: 2000,
+        },
+        0
+      )
+      .add(
+        ".square",
+        {
+          translateX: "15rem",
+          duration: 500,
+          delay: 2000,
+        },
+        0
+      )
+      .add(
+        ".triangle",
+        {
+          translateX: "15rem",
+          translateY: "-.375rem",
+          rotate: "1turn",
+          scale: 1.5,
+          delay: 0,
+        },
+        0
+      );
   }, []);
   return (
     <>
-      <div
-        className="square"
-        style={{
-          width: 100,
-          height: 100,
-          backgroundColor: "#555",
-          margin: 10,
-          borderRadius: 5,
-        }}
-      ></div>
+      <div>
+        <div
+          className="square"
+          style={{ width: 100, height: 100, backgroundColor: "red" }}
+        ></div>
+        <div
+          className="circle"
+          style={{ width: 100, height: 100, backgroundColor: "blue" }}
+        ></div>
+        <div
+          className="triangle"
+          style={{ width: 100, height: 100, backgroundColor: "green" }}
+        ></div>
+      </div>
     </>
   );
 }

@@ -29,6 +29,7 @@ import { Animatable } from "./animatable";
 import { Draggable } from "./draggable";
 
 import { Scope } from "./scope";
+import { TimelineParams } from "./types";
 
 // Main methods
 
@@ -50,7 +51,8 @@ const animate = (targets, parameters) =>
  * @param {TimelineParams} [parameters]
  * @return {Timeline}
  */
-const createTimeline = (parameters) => new Timeline(parameters).init();
+const createTimeline = (parameters: TimelineParams) =>
+  new Timeline(parameters).init();
 
 /**
  * @param {TargetsParam} targets
