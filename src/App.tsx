@@ -37,6 +37,8 @@ import ANewProductionIn from "./components/anime-letters/a-new-production-in";
 import ANewProductionOut from "./components/anime-letters/a-new-production-out";
 import RisingStrongIn from "./components/anime-letters/rising-strong-in";
 import RisingStrongOut from "./components/anime-letters/rising-strong-out";
+import Scene from "./Scene";
+import { trackItems } from "./data";
 
 function App() {
   const timeLine = createTimeline({
@@ -44,10 +46,11 @@ function App() {
   });
   return (
     <>
-      <Thursday text="Hello World" timeLine={timeLine} />
+      <Scene trackItems={trackItems} />
+      {/* <Thursday text="Hello World" timeLine={timeLine} /> */}
       {/* <SunnyMornings text="Hello World" timeLine={timeLine} /> */}
-      {/* <GreatThinkers text="Hello World" timeLine={timeLine} /> */}
-      {/* <ReadySetGo text="Hello World Luis" timeLine={timeLine} /> */}
+      {/* <GreatThinkers text="Hello World" timeLine={timeLine} from={0} /> */}
+      {/* <ReadySetGo text="Hello World Luis" timeLine={timeLine} from={0} /> */}
       {/* <SignalNoise text="Hello World Luis" timeLine={timeLine} /> */}
       {/* <BeautifulQuestions text="Hello World Luis" timeLine={timeLine} /> */}
       {/* <RealityBroken text="Hello World Luis" timeLine={timeLine} /> */}

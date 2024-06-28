@@ -1,24 +1,29 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import "../style.css";
-import { Timeline, createTimeline } from "../../anime/anime";
+import { Timeline, createTimeline, utils } from "../../anime/anime";
 
 interface AnimatedLettersProps {
   text: string;
   timeLine: Timeline;
+  from: number;
 }
 
-const ReadySetGo: React.FC<AnimatedLettersProps> = ({ text, timeLine }) => {
+const ReadySetGo: React.FC<AnimatedLettersProps> = ({
+  text,
+  timeLine,
+  from,
+}) => {
   useEffect(() => {
     const words = text.split(" ");
-
+    const time = (from / 30) * 1000;
     const ml4 = {
-      opacityIn: [0, 1],
-      scaleIn: [0.2, 1],
+      opacityIn: { from: 0, to: 1 },
+      scaleIn: { from: 0.2, to: 1 },
       scaleOut: 3,
       durationIn: 800,
       durationOut: 600,
-      delay: 500,
+      delay: 700,
     };
     words.forEach((word, index) => {
       timeLine
@@ -28,13 +33,14 @@ const ReadySetGo: React.FC<AnimatedLettersProps> = ({ text, timeLine }) => {
             opacity: ml4.opacityIn,
             scale: ml4.scaleIn,
             duration: ml4.durationIn,
+            delay: index === 0 && time,
           },
           index === 0 ? 0 : "<="
         )
         .add(
           `.ml4 .letters-${index}`,
           {
-            opacity: 0,
+            opacity: { from: 1, to: 0 },
             scale: ml4.scaleOut,
             duration: ml4.durationOut,
             ease: "inExpo",
@@ -48,11 +54,12 @@ const ReadySetGo: React.FC<AnimatedLettersProps> = ({ text, timeLine }) => {
       {
         opacity: 0,
         duration: 500,
-        delay: 500,
+        delay: 1400 * words.length + time,
       },
       "<="
     );
-  }, [text]);
+  }, [timeLine, text, from]);
+  // utils.cleanInlineStyles(timeLine);
   const words = text.split(" ");
 
   return (

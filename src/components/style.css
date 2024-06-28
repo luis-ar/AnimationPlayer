@@ -21,6 +21,7 @@ body {
 .ml1 {
   font-weight: 900;
   font-size: 3.5em;
+  opacity: 1;
 }
 
 .ml1 .letter {

@@ -1,17 +1,22 @@
 "use client";
 import React, { useEffect } from "react";
-import { Timeline } from "../../anime/anime";
+import { Timeline, utils } from "../../anime/anime";
 import "../style.css";
 import { spanLetters } from "../../utils/span-letters";
 
 interface AnimatedLetterProps {
   text: string;
   timeLine: Timeline;
+  from: number;
 }
-const GreatThinkers: React.FC<AnimatedLetterProps> = ({ text, timeLine }) => {
+const GreatThinkers: React.FC<AnimatedLetterProps> = ({
+  text,
+  timeLine,
+  from,
+}) => {
   useEffect(() => {
     spanLetters(text, "ml3");
-
+    const time = (from / 30) * 1000;
     timeLine
       .add(
         ".ml3 .letter",
@@ -19,7 +24,7 @@ const GreatThinkers: React.FC<AnimatedLetterProps> = ({ text, timeLine }) => {
           opacity: { from: 0, to: 1 },
           ease: "inOutQuad",
           duration: 2250,
-          delay: (el, i) => 150 * (i + 1),
+          delay: (el, i) => 150 * (i + 1) + time,
         },
         0
       )
@@ -33,7 +38,9 @@ const GreatThinkers: React.FC<AnimatedLetterProps> = ({ text, timeLine }) => {
         },
         "<="
       );
-  }, []);
+  }, [timeLine, text, from]);
+  // utils.cleanInlineStyles(timeLine);
+
   return <h1 className="ml3">{text}</h1>;
 };
 

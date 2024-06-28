@@ -1,15 +1,21 @@
 "use client";
 import React, { useEffect } from "react";
-import { Timeline } from "../../anime/anime";
+import { Timeline, utils } from "../../anime/anime";
 import "../style.css";
 import { spanLetters } from "../../utils/span-letters";
 interface AnimatedLetterProps {
   text: string;
   timeLine: Timeline;
+  from: number;
 }
-const SunnyMornings: React.FC<AnimatedLetterProps> = ({ text, timeLine }) => {
+const SunnyMornings: React.FC<AnimatedLetterProps> = ({
+  text,
+  timeLine,
+  from,
+}) => {
   useEffect(() => {
     spanLetters(text, "ml2");
+    const time = (from / 30) * 1000;
     timeLine
       .add(
         ".ml2 .letter",
@@ -19,7 +25,7 @@ const SunnyMornings: React.FC<AnimatedLetterProps> = ({ text, timeLine }) => {
           translateZ: 0,
           ease: "outExpo",
           duration: 1000,
-          delay: (el, i) => 70 * i,
+          delay: (el, i) => 70 * i + time,
         },
         0
       )
@@ -33,7 +39,9 @@ const SunnyMornings: React.FC<AnimatedLetterProps> = ({ text, timeLine }) => {
         },
         "<="
       );
-  }, []);
+  }, [timeLine, text, from]);
+  // utils.cleanInlineStyles(timeLine);
+
   return (
     <div>
       <h1 className="ml2">{text}</h1>
