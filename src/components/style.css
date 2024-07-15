@@ -1,9 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap");
 /* animation 1 */
 body {
-  font: normal 16px/1.9em "Inter", "Source Sans Pro", "Helvetica Neue", Arial,
-    sans-serif;
+  font: normal "Inter", "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
   background-color: #402d2d;
   color: #fff;
@@ -436,7 +435,7 @@ h1.ml8 {
 }
 
 .ml17 .container1 {
-  background-color: #3498db;
+  background-color: #106aa7;
   height: 70%;
   position: relative;
   display: flex;
@@ -444,7 +443,7 @@ h1.ml8 {
   justify-content: end;
   align-items: center;
   padding-bottom: 20px;
-  width: 100%;
+  width: 0%;
   gap: 60px;
   .circle {
     width: 100px;
@@ -452,15 +451,17 @@ h1.ml8 {
     border-radius: 50%;
     background-color: #fff;
     border: black 3px dotted;
+    opacity: 0;
   }
 }
 
 .ml17 .container2 {
-  background-color: #2ecc71;
+  background-color: #fff;
   height: 30%;
   text-align: center;
   padding-top: 20px;
   position: relative;
+  width: 0px;
 }
 .ml17 .containerText1 {
   overflow: hidden;
@@ -478,6 +479,7 @@ h1.ml8 {
 .ml17 .text2 {
   position: relative;
   top: 80px;
+  color: black;
 }
 
 /* animation 19*/
@@ -639,4 +641,293 @@ h1.ml8 {
 .ml39 .letter {
   display: inline-block;
   line-height: 1em;
+}
+
+/* outro */
+.ml40 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.ml40 .container {
+  height: 100%;
+  width: 0%;
+  background-color: rgba(0, 0, 0, 0.6);
+  clip-path: polygon(0 0, 83% 0, 100% 100%, 0% 100%);
+  display: grid;
+  font-family: Baskerville, serif;
+}
+.ml40 .containerText1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .icon {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 20px;
+    margin-left: 30px;
+    opacity: 0;
+  }
+}
+.ml40 .containerText2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30px;
+  font-size: 40px;
+  span {
+    margin-top: 30px;
+    opacity: 0;
+  }
+  .text1 {
+    margin-top: 0;
+  }
+}
+.ml40 .containerText3 {
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  .text1 {
+    position: absolute;
+    top: 0;
+    font-size: 22px;
+    opacity: 0;
+  }
+  .text2 {
+    margin-top: 40px;
+  }
+  .text2 span {
+    opacity: 0;
+    font-size: 30px;
+    padding: 20px 50px;
+    text-align: center;
+    border-radius: 40px;
+    position: relative;
+  }
+  .textURL::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 5px solid #106aa7;
+    border-right: 5px solid #106aa7;
+    animation: border-top-right 2s infinite;
+  }
+  .textURL::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 5px solid #106aa7;
+    border-left: 5px solid #106aa7;
+    animation: border-bottom-left 2s infinite;
+  }
+}
+
+@keyframes border-top-right {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  25% {
+    width: 100%;
+    height: 0;
+  }
+  50% {
+    width: 100%;
+    height: calc(100% - 5px);
+  }
+
+  100% {
+    width: 100%;
+    height: calc(100% - 5px);
+  }
+}
+
+@keyframes border-bottom-left {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  50.1% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  75% {
+    width: 100%;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    height: calc(100% - 5px);
+    opacity: 1;
+  }
+}
+
+/* animation 41 */
+
+.ml41 {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 41px;
+  max-width: 300px;
+  margin-top: 60px;
+}
+
+.ml41 .line {
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  opacity: 0;
+}
+
+.ml41 .text {
+  padding: 30px;
+  text-align: center;
+  line-height: 1.3;
+  position: relative;
+  bottom: 50%;
+}
+
+/* animation 42 */
+
+.ml42 {
+  font-family: "Overpass", sans-serif;
+  color: white;
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  position: relative;
+}
+
+.ml42 .text {
+  font-size: 420px;
+  position: relative;
+  color: turquoise;
+  display: block;
+  line-height: 0;
+  margin: 0px;
+  padding: 210px 0;
+  padding-bottom: 0;
+  opacity: 0;
+}
+
+.ml42 .text1 {
+  padding-left: 10px;
+  font-size: 60px;
+  line-height: 1.2;
+  position: absolute;
+  top: 80px;
+}
+
+.ml42 .letter {
+  opacity: 0;
+}
+
+/* animation 43 */
+
+.ml43 {
+  font-family: "Overpass", sans-serif;
+  color: white;
+  font-size: 40px;
+}
+
+.ml43 .content {
+  display: flex;
+  flex-direction: column;
+}
+
+.ml43 .content1 {
+  background-color: rgb(40, 93, 120);
+  overflow: hidden;
+  width: max-content;
+  opacity: 0;
+}
+
+.ml43 .content2 {
+  background-color: rgb(234, 237, 239);
+  overflow: hidden;
+  color: black;
+  width: auto;
+  display: inline-block;
+  width: max-content;
+  opacity: 0;
+  .text2 {
+    margin: 10px 30px;
+  }
+}
+
+.ml43 .text1 {
+  position: relative;
+  left: 110%;
+  opacity: 0;
+  margin: 10px 30px;
+  white-space: nowrap;
+}
+
+.ml43 .text2 {
+  position: relative;
+  left: 110%;
+  opacity: 0;
+  margin: 10px 30px;
+  white-space: nowrap;
+}
+
+/* animation 44 */
+
+.ml44 {
+  font-family: "Overpass", sans-serif;
+  color: white;
+  font-size: 40px;
+}
+
+.ml44 .content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.ml44 .content1 {
+  background-color: rgb(80, 203, 31);
+  text-align: center;
+  font-size: 90px;
+  color: black;
+  overflow: hidden;
+  position: absolute;
+  height: 0;
+  flex: 1;
+  .text {
+    margin: 10px 30px;
+    position: relative;
+    white-space: nowrap;
+    top: 100%;
+  }
+}
+.ml44 .content2 {
+  background-color: rgb(234, 237, 239);
+  overflow: hidden;
+  flex: 1;
+  display: inline-block;
 }

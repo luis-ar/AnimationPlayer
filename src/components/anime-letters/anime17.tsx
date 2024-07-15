@@ -6,12 +6,18 @@ import "../style.css";
 interface AnimatedLettersProps {
   text: string;
   timeLine: Timeline;
+  from: number;
+  to: number;
 }
 const SeventeenAnimation: React.FC<AnimatedLettersProps> = ({
   text,
   timeLine,
+  from,
+  to,
 }) => {
   useEffect(() => {
+    const timeFrom = (from / 30) * 1000;
+    const timeTo = (to / 30) * 1000;
     timeLine
       .add(
         ".ml17 .container1",
@@ -19,7 +25,8 @@ const SeventeenAnimation: React.FC<AnimatedLettersProps> = ({
           width: { from: "0%", to: "100%" },
           opacity: { from: 0, to: 1 },
           ease: "inOutQuad",
-          duration: 1000,
+          duration: 1500,
+          delay: timeFrom,
         },
         0
       )
@@ -30,16 +37,16 @@ const SeventeenAnimation: React.FC<AnimatedLettersProps> = ({
           ease: "inOutQuad",
           duration: 1000,
         },
-        "-=800"
+        "<-=800"
       )
       .add(
         ".ml17 .container2",
         {
           width: { from: "0%", to: "100%" },
-          ease: "inOutQuad",
+          ease: "inSine",
           duration: 1000,
         },
-        "-=900"
+        "<-=900"
       )
       .add(
         ".ml17 .text2",
@@ -48,26 +55,27 @@ const SeventeenAnimation: React.FC<AnimatedLettersProps> = ({
           ease: "inOutQuad",
           duration: 1000,
         },
-        "-=800"
+        "<-=800"
       )
       .add(
         ".ml17 .container1 .circle",
         {
           scale: { from: 0, to: 1 },
+          opacity: 1,
           ease: "inOutExpo",
           duration: 1000,
         },
-        "-=800"
+        "<-=800"
       )
       .add(
         ".ml17 .container1",
         {
           bottom: { from: "0%", to: "70%" },
-          opacity: 1,
           ease: "inOutQuad",
           duration: 1000,
+          delay: timeTo - 1500,
         },
-        "-=1000"
+        0
       )
       .add(
         ".ml17 .container2",
@@ -77,7 +85,7 @@ const SeventeenAnimation: React.FC<AnimatedLettersProps> = ({
           easing: "easeInOutQuad",
           duration: 1000,
         },
-        "-=1000"
+        "<-=1000"
       );
   }, [text]);
   return (
