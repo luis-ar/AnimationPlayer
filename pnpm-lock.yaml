@@ -8,12 +8,18 @@ importers:
 
   .:
     dependencies:
+      '@remotion/player':
+        specifier: ^4.0.178
+        version: 4.0.178(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: ^18.2.0
         version: 18.3.1
       react-dom:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
+      remotion:
+        specifier: ^4.0.178
+        version: 4.0.178(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@types/react':
         specifier: ^18.2.66
@@ -353,6 +359,12 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
+
+  '@remotion/player@4.0.178':
+    resolution: {integrity: sha512-qKzgWwf7Z759yxEka8MMSlb4SX2YuUiYbgKSjhtC7Lday+1/iC0M8/0shxWiEqCk5f90EKSjJwOwKFe5tgfK/g==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
 
   '@rollup/rollup-android-arm-eabi@4.18.0':
     resolution: {integrity: sha512-Tya6xypR10giZV1XzxmH5wr25VcZSncG0pZIjfePT0OVBvqNEurzValetGNarVrGiq66EBVAFn15iYX4w6FKgQ==}
@@ -966,6 +978,12 @@ packages:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
     engines: {node: '>=0.10.0'}
 
+  remotion@4.0.178:
+    resolution: {integrity: sha512-V4ga/uPQ4WzX4Jh7q7C/6wzSv+r8AC5PW3jIP1puEsCs75TMBXVy8/lSwgSvrFX6UiMi4A6NSZyY2ljHyY7aDA==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
   resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
@@ -1401,6 +1419,12 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
+
+  '@remotion/player@4.0.178(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      remotion: 4.0.178(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   '@rollup/rollup-android-arm-eabi@4.18.0':
     optional: true
@@ -2024,6 +2048,11 @@ snapshots:
   react@18.3.1:
     dependencies:
       loose-envify: 1.4.0
+
+  remotion@4.0.178(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   resolve-from@4.0.0: {}
 
