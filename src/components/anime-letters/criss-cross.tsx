@@ -1,8 +1,7 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { Timeline, createTimeline } from "../../anime/anime";
+import React, { useEffect } from "react";
+import { Timeline } from "../../anime/anime";
 import "../style.css";
-import { spanLetters } from "../../utils/span-letters";
 
 interface AnimatedLettersProps {
   text: string;

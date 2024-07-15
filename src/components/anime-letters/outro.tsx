@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { Timeline, createTimeline } from "../../anime/anime";
+import React, { useEffect } from "react";
+import { Timeline } from "../../anime/anime";
 import "../style.css";
 
 interface AnimatedLettersProps {
@@ -9,11 +9,7 @@ interface AnimatedLettersProps {
   from: number;
   to: number;
 }
-const Outro: React.FC<AnimatedLettersProps> = ({
-  text,
-  timeLine,
-  from,
-}) => {
+const Outro: React.FC<AnimatedLettersProps> = ({ text, timeLine, from }) => {
   useEffect(() => {
     const timeFrom = (from / 30) * 1000;
     timeLine

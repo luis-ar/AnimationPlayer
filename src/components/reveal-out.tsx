@@ -1,8 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
-import { Timeline, animate } from "../anime/anime";
+import { Timeline } from "../anime/anime";
 import "./style.css";
-
 interface AnimatedLetterProps {
   timeLine: Timeline;
 }

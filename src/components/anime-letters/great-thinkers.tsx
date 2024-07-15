@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { Timeline, utils } from "../../anime/anime";
+import { Timeline } from "../../anime/anime";
 import "../style.css";
 import { spanLetters } from "../../utils/span-letters";
 
